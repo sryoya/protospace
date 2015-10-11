@@ -26,7 +26,7 @@ belongs_to :user
 has_many :likes
 has_many :comments
 has_many :tags, through :proto_tags
-has_many :images
+has_many :proto_images
 
 
 
@@ -60,10 +60,11 @@ belongs_to :proto
 belongs_to :user
 belongs_to :proto
 
-・imagesテーブル
+・proto_imagesテーブル
 -id
 -image
 -proto_id
+-status
 
 belongs_to :proto
 
