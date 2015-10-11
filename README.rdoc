@@ -1,3 +1,74 @@
+DB設計図
+
+・usersテーブル
+-id
+-name
+-email
+-password
+-avatar
+-group（top_aligned_media）
+-profile
+-works
+
+has_many :protos
+has_many :likes
+has_many :comments
+
+
+・protoテーブル
+-id
+-title
+-catch_copy
+-concept
+-user_id
+
+belongs_to :user
+has_many :likes
+has_many :comments
+has_many :tags, through :proto_tags
+has_many :images
+
+
+
+・tagsテーブル
+-id
+-name
+
+has_many :protos, through :proto_tags
+
+・proto＿tagsテーブル
+-proto_id
+-tag_id
+
+belongs_to :proto
+belongs_to :tag
+
+・likesテーブ
+-id
+-user_id（like押した方）
+-proto_id
+
+belongs_to :user
+belongs_to :proto
+
+・commentsテーブル
+-id
+-content
+-user_id(commentした方)
+-proto_id
+
+belongs_to :user
+belongs_to :proto
+
+・imagesテーブル
+-id
+-image
+-proto_id
+
+belongs_to :proto
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
@@ -26,3 +97,5 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
