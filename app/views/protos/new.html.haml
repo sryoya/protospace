@@ -1,29 +1,28 @@
-.container.proto-new
-  = form_for(@proto) do |f|
-    .col-md-8.col-md-offset-2
-      %header.row.user-nav.row
-        .col-md-12
-          = f.text_field :title, placeholder: "Title", class: "proto-new-title"
-      .row
-        = f.file_field :image, class: "col-md-12 cover-image-upload"
-        .col-md-12
-          %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4
-              = f.file_field :image, class: "image-upload"
-            %li.list-group-item.col-md-4
-              = f.file_field :image, class: "image-upload"
-            %li.list-group-item.col-md-4
-              .image-upload-plus
-                %span +
-      .row.proto-description
-        = f.text_field :catch_copy, placeholder: "Catch Copy", class: "col-md-12"
-        = f.text_field :concept, cols: "30", rows: "4", placeholder: "Concept", class: "col-md-12"
-        .col-md-12
-          %h4 Tag List
-          .row
-            = f.text_field :title, placeholder: "Web Design", class: "col-md-3"
-            = f.text_field :title, placeholder: "UI", class: "col-md-3"
-            = f.text_field :title, placeholder: "Application", class: "col-md-3"
-      .row.text-center.proto-btn
-        = f.submit placeholder: "Publish", class: "btn btn-lg btn-primary btn-block"
+= form_for(@proto, html: {class: "container proto-new"}) do |f|
+  .col-md-8.col-md-offset-2
+    %header.row.user-nav.row
+      .col-md-12
+        = f.text_field :title, placeholder: "Title", class: "proto-new-title"
+    .row
+      = f.file_field :image, class: "col-md-12 cover-image-upload"
+      .col-md-12
+        %ul.proto-sub-list.list-group
+          %li.list-group-item.col-md-4
+            = f.file_field :image, class: "image-upload"
+          %li.list-group-item.col-md-4
+            = f.file_field :image, class: "image-upload"
+          %li.list-group-item.col-md-4
+            .image-upload-plus
+              %span +
+    .row.proto-description
+      = f.text_field :catch_copy, placeholder: "Catch Copy", class: "col-md-12"
+      = f.text_field :concept, cols: "30", rows: "4", placeholder: "Concept", class: "col-md-12"
+      .col-md-12
+        %h4 Tag List
+        .row
+          = f.text_field :title, placeholder: "Web Design", class: "col-md-3"
+          = f.text_field :title, placeholder: "UI", class: "col-md-3"
+          = f.text_field :title, placeholder: "Application", class: "col-md-3"
+    .row.text-center.proto-btn
+      = f.submit placeholder: "Publish", class: "btn btn-lg btn-primary btn-block"
       
