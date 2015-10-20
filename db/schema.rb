@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020111817) do
+ActiveRecord::Schema.define(version: 20151020112745) do
 
   create_table "proto_images", force: :cascade do |t|
     t.text     "image",      limit: 65535
     t.string   "status",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proto_id",   limit: 4
   end
+
+  add_index "proto_images", ["proto_id"], name: "index_proto_images_on_proto_id", using: :btree
 
   create_table "protos", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -54,4 +57,5 @@ ActiveRecord::Schema.define(version: 20151020111817) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "proto_images", "protos"
 end
