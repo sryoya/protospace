@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20151020102615) do
 
+
   create_table "protos", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.string   "catch_copy", limit: 255
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151020102615) do
   end
 
   add_index "protos", ["user_id"], name: "index_protos_on_user_id", using: :btree
+
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
