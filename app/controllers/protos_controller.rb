@@ -4,7 +4,6 @@ class ProtosController < ApplicationController
   end
 
   def create
-    binding.pry
     proto = Proto.create(title: create_params[:title], catch_copy: create_params[:catch_copy], concept: create_params[:concept])
 
     ProtoImage.create(image: create_params[:main_image], status: "main", proto_id: proto.id)
