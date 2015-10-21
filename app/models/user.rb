@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :name, presence: true
   has_many :protos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
