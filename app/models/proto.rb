@@ -5,6 +5,6 @@ class Proto < ActiveRecord::Base
   attr_accessor :tag1, :tag2, :tag3
 
   def reject_proto_images(attributed)
-    attributed['image'].blank?
+    attributed[:image].blank?
   end
 end
