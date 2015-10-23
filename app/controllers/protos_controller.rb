@@ -5,8 +5,9 @@ class ProtosController < ApplicationController
   end
 
   def create
-    Proto.new(create_params)
-    
+    proto = Proto.new(create_params)
+    proto.user_id = current_user.id
+    proto.save
     redirect_to :root and return
   end
 
