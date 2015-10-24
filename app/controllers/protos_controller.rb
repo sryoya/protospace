@@ -5,14 +5,12 @@ class ProtosController < ApplicationController
   end
 
   def create
-    proto = Proto.new(create_params)
-    proto.user_id = current_user.id
-    proto.save
+    Proto.create(create_params)
     redirect_to :root and return
   end
 
   private
     def create_params
-      params.require(:proto).permit(:title, :catch_copy, :concept, proto_images_attributes: [:image, :status])
+      params.require(:proto).permit(:title, :catch_copy, :concept, proto_images_attributes: [:image, :status]).merge(user_id: current_user.id)
     end
 end
