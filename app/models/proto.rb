@@ -4,7 +4,7 @@ class Proto < ActiveRecord::Base
   validates :title, :catch_copy, :concept, presence: true
   accepts_nested_attributes_for :proto_images, allow_destroy: true, reject_if: :reject_proto_images
   validates :proto_images, presence: true
-  attr_accessor :tag1, :tag2, :tag3
+  acts_as_taggable
 
   def reject_proto_images(attributed)
     attributed[:image].blank?
