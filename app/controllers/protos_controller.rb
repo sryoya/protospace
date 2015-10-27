@@ -1,4 +1,10 @@
 class ProtosController < ApplicationController
+  def show
+    @proto = Proto.find(params[:id])
+    @main_image = @proto.proto_images.find_by(status: "main")
+    @sub_images = @proto.proto_images.where(status: "sub")
+    @user = @proto.user
+  end
   def new
     @proto = Proto.new
     @proto.proto_images.build
