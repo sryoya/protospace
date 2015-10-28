@@ -4,6 +4,9 @@ class ProtosController < ApplicationController
     @main_image = @proto.proto_images.find_by(status: "main")
     @sub_images = @proto.proto_images.where(status: "sub")
     @user = @proto.user
+    @comment = Comment.new
+    @comments = Comment.all
+    @tags = @proto.tag_list
   end
   def new
     @proto = Proto.new
