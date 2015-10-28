@@ -52,8 +52,8 @@
       = render @comments
     = form_for(@comment, remote: true, html: {class: "form-inline", role: "form"}) do |f|
       = f.hidden_field :proto_id, value: "#{@proto.id}"
-      %h4 Write a comment
       .row
+        %h4 Write a comment
         .form-group.col-md-10
           = f.text_area :comment, class: "form-control", id: "comment", placeholder: "Your comments", rows: "3"
         .form-group.col-md-2
