@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     Comment.create(create_params)
-    @comments = Comment.all
+    @comments = Comment.includes(:user).all
   end
 
   private
