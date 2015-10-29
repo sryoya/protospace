@@ -1,8 +1,8 @@
 class ProtosController < ApplicationController
   def show
     @proto = Proto.find(params[:id])
-    @main_image = @proto.proto_images.find_by(status: "main")
-    @sub_images = @proto.proto_images.where(status: "sub")
+    @main_image = @proto.proto_images.main.first
+    @sub_images = @proto.proto_images.sub
     @user = @proto.user
     @comment = Comment.new
     @comments = @proto.comments.includes(:user)

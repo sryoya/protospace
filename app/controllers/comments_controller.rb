@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     Comment.create(create_params)
-    proto = Proto.find(create_params[:proto_id])
+    proto = Proto.find(params[:comment][:proto_id])
     @comments = proto.comments.includes(:user)
   end
 
