@@ -5,7 +5,7 @@ class ProtosController < ApplicationController
     @sub_images = @proto.proto_images.where(status: "sub")
     @user = @proto.user
     @comment = Comment.new
-    @comments = Comment.includes(:user).all
+    @comments = @proto.comments.includes(:user)
     @tags = @proto.tag_list
   end
   def new
