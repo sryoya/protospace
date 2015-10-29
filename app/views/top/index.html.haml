@@ -12,16 +12,13 @@
           %a{:href => "#"} Newest PROTO
       %button{:type => "button", :class => "btn btn-default col-lg-1"}
         = link_to "View Tags", tags_path
-      
-
 .container.proto-list
-
   .row
     - @protos.each do |proto|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
           %a{:href => ""}
-            = image_tag("#{proto.proto_images.find_by(status: "main").image}")
+            = image_tag("#{proto.proto_images.main.first.image}")
             .caption
               %h3 #{proto.title}
               .proto-meta
