@@ -4,16 +4,16 @@
       .media
         .media-left
           %a{:href => "#"}
-            %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@user.avatar}", :style => "width: 64px; height: 64px;"}/
+            %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@proto.user.avatar}", :style => "width: 64px; height: 64px;"}/
         .media-body
           %h4#top-aligned-media.media-heading
             = @proto.title
           .proto-user
             %a{:href => ""}
-              by #{@user.name}
+              by #{@proto.user.name}
             %span.degree
-              = @user.group
-              = @user.works
+              = @proto.user.group
+              = @proto.user.works
     .col-md-6.text-right
       %button.btn.btn-default
         = image_tag("icon_heart.svg")
@@ -21,10 +21,10 @@
         %span.num 20
   .row
     .col-md-9
-      = image_tag("#{@main_image.image}", :class => 'img-responsive')
+      = image_tag("#{@proto.proto_images.main.first.image}", :class => 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
-        - @sub_images.each do |sub_image|
+        -  @proto.proto_images.sub.each do |sub_image|
           %li.list-group-item
             = image_tag("#{sub_image.image}", :class => 'img-responsive')
   .row.proto-description
@@ -39,7 +39,7 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        - @tags.each do |tag|
+        - @proto.tags.each do |tag|
           %li
             %a{:href => "#", :class => "btn btn-default"}
               = tag

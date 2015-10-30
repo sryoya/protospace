@@ -1,12 +1,8 @@
 class ProtosController < ApplicationController
   def show
-    @proto = Proto.find(params[:id])
-    @main_image = @proto.proto_images.main.first
-    @sub_images = @proto.proto_images.sub
-    @user = @proto.user
+    @proto = Proto.includes(:proto_images, :user, :tags).find(params[:id])
     @comment = Comment.new
     @comments = @proto.comments.includes(:user)
-    @tags = @proto.tag_list
   end
   def new
     @proto = Proto.new
