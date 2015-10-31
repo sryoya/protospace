@@ -50,7 +50,7 @@
         (#{@comments.length})
     .comments
       = render @comments
-    = form_for(@comment, remote: true, html: {class: "form-inline", role: "form"}) do |f|
+    = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
       = f.hidden_field :proto_id, value: "#{@proto.id}"
       .row
         %h4 Write a comment
