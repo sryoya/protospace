@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Protos::CommentsController < ApplicationController
   def create
     Comment.create(create_params)
     proto = Proto.find(params[:comment][:proto_id])
