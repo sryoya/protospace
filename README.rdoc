@@ -43,7 +43,7 @@ has_many :protos, through :proto_tags
 belongs_to :proto
 belongs_to :tag
 
-・likesテーブ
+・likesテーブル
 -id
 -user_id（like押した方）
 -proto_id
