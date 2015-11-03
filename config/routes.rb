@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
     root 'top#index'
+    resources :users, only: :show
+    resources :tags, only: :index
     resources :protos, only: [:show, :new, :create], module: :protos do
      resources :comments, only: :create
     end
