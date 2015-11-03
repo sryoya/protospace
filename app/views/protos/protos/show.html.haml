@@ -14,7 +14,7 @@
             %span.degree
               = @proto.user.group
               = @proto.user.works
-    = form_for(@like, html: {class: "col-md-6 text-right"}) do |f|
+    = form_for([@proto,@like], html: {class: "col-md-6 text-right"}) do |f|
       = f.hidden_field :proto_id, value: "#{@proto.id}"
       = f.button class: "btn btn-default" do
         = image_tag("icon_heart.svg")
