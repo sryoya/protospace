@@ -1,0 +1,17 @@
+- if @likes.find_by(user_id: current_user.id)
+  = link_to proto_like_path("#{@proto.id}", "#{@likes.find_by(user_id: current_user.id).id}"), method: :delete, remote: true, class: "col-md-6 text-right" do
+    %button.btn.btn-default
+      %span.icon_heart
+        = image_tag("icon_heart(red).svg")
+      Like
+      %span.num
+        = @likes.length
+- else
+  = form_for([@proto,@like], remote: true, html: {class: "col-md-6 text-right"}) do |f|
+    = f.hidden_field :proto_id, value: "#{@proto.id}"
+    = f.button class: "btn btn-default" do
+      %span.icon_heart
+        = image_tag("icon_heart.svg")
+      Like
+      %span.num
+        = @likes.length

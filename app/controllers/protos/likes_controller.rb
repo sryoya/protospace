@@ -1,17 +1,18 @@
 class Protos::LikesController < ApplicationController
   def create
     Like.create(create_params)
-    proto = Proto.find(params[:like][:proto_id])
-    @likes = proto.likes
-    redirect_to proto_path(params[:like][:proto_id]) and return
+    @proto = Proto.find(params[:like][:proto_id])
+    @likes = @proto.likes
   end
 
   def destroy
-    like = Like.find(params[:id])
+  like = Like.find(params[:id])
     if like.user_id == current_user.id
       like.destroy
     end
-  redirect_to proto_path(like.proto_id) and return
+  @proto = Proto.find(params[:proto_id])
+  @likes = @proto.likes
+  @like = Like.new
   end
 
   private

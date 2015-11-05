@@ -14,21 +14,8 @@
             %span.degree
               = @proto.user.group
               = @proto.user.works
-    - if @proto.likes.find_by(user_id: current_user.id)
-      = link_to proto_like_path("#{@proto.id}", "#{@proto.likes.find_by(user_id: current_user.id).id}"), method: :delete, class: "col-md-6 text-right" do
-        %button.btn.btn-default
-          = image_tag("icon_heart(red).svg")
-          Like
-          %span.num
-            = @proto.likes.length
-    - else
-      = form_for([@proto,@like], html: {class: "col-md-6 text-right"}) do |f|
-        = f.hidden_field :proto_id, value: "#{@proto.id}"
-        = f.button class: "btn btn-default" do
-          = image_tag("icon_heart.svg")
-          Like
-          %span.num
-            = @proto.likes.length
+    .likes
+      = render partial: 'protos/likes/like'
   .row
     .col-md-9
       = image_tag("#{@proto.proto_images.main.first.image}", :class => 'img-responsive')

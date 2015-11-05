@@ -4,6 +4,7 @@ class Protos::ProtosController < ApplicationController
     @comment = Comment.new
     @like = Like.new
     @comments = @proto.comments.includes(:user)
+    @likes = @proto.likes
   end
   def new
     @proto = Proto.new
