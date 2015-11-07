@@ -2,9 +2,9 @@ class Protos::ProtosController < ApplicationController
   def show
     @proto = Proto.includes(:proto_images, :user, :tags).find(params[:id])
     @comment = Comment.new
-    @like = Like.new
     @comments = @proto.comments.includes(:user)
     @likes = @proto.likes
+    @like = Like.where(proto_id: @proto.id, user_id: current_user.id)
   end
   def new
     @proto = Proto.new
