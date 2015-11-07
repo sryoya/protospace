@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :tags, only: :index
     resources :protos, only: [:show, :new, :create], module: :protos do
      resources :comments, only: :create
+     resources :likes, only: [:create, :destroy]
     end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

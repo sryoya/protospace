@@ -1,4 +1,4 @@
-$("span.num").html("(<%= @comments.length %>)");
+$(".row.proto-comments span.num").html("(<%= @comments.length %>)");
 $(".comments").html("<%= j(render @comments) %>");
 $("#comment").val("");
 

@@ -14,11 +14,8 @@
             %span.degree
               = @proto.user.group
               = @proto.user.works
-    .col-md-6.text-right
-      %button.btn.btn-default
-        = image_tag("icon_heart.svg")
-        Like
-        %span.num 20
+    .likes
+      = render partial: 'protos/likes/like'
   .row
     .col-md-9
       = image_tag("#{@proto.proto_images.main.first.image}", :class => 'img-responsive')

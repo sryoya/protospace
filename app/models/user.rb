@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   has_many :protos
   has_many :comments
+  has_many :likes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
