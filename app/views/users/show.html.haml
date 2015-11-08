@@ -2,7 +2,7 @@
   %header.user-nav
     .media
       .media-left
-        %a{:href => "#"}
+        = link_to user_path(@user.id) do
           %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@user.avatar}", :style => "width: 64px; height: 64px;"}/
       .media-body
         %h4#top-aligned-media.media-heading
@@ -27,7 +27,7 @@
     - @protos.each do |proto|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
-          %a{:href => ""}
+          = link_to proto_path(proto.id) do
             = image_tag("#{proto.proto_images.main.first.image}")
             .caption
               %h3
@@ -38,8 +38,7 @@
               %ul.proto-tag-list.list-inline
                 - proto.tags.each do |tag|
                   %li
-                    %a{:href => "#", :class => "btn btn-default"}
-                      = tag.name
+                    = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
 .text-center
   %ul.pagination
     %li.disabled

@@ -3,13 +3,13 @@
     .col-md-6
       .media
         .media-left
-          %a{:href => "#"}
+          = link_to user_path(@proto.user.id) do
             %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@proto.user.avatar}", :style => "width: 64px; height: 64px;"}/
         .media-body
           %h4#top-aligned-media.media-heading
             = @proto.title
           .proto-user
-            = link_to "by#{proto.user.name}", user_path(proto.user.id)
+            = link_to "by#{@proto.user.name}", user_path(@proto.user.id)
             %span.degree
               = @proto.user.group
               = @proto.user.works
@@ -37,8 +37,7 @@
       %ul.proto-tag-list.list-inline
         - @proto.tags.each do |tag|
           %li
-            %a{:href => "#", :class => "btn btn-default"}
-              = tag
+            = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
   .row.proto-comments
     %h4.col-md-12
       Comments
