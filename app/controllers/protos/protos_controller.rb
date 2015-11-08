@@ -16,6 +16,11 @@ class Protos::ProtosController < ApplicationController
     redirect_to :root and return
   end
 
+  def popular
+    likes = Like.group(:proto_id).order('count_proto_id DESC').limit(20).count(:proto_id).keys
+    @protos = likes.map{|like| Proto.includes(:user, :tags, :proto_images).find(like)}
+  end
+
   def newest
     @protos = Proto.includes(:user, :tags, :proto_images).order(updated_at: :desc).limit(20)
   end

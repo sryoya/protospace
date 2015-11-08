@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :tags, only: :index
     resources :protos, only: [:show, :new, :create], module: :protos do
       collection do
+        get 'popular'
         get 'newest'
       end
       resources :comments, only: :create
