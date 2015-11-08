@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
     root 'top#index'
     resources :users, only: :show
-    resources :tags, only: :index
+    resources :tags, only: [:index, :show]
     resources :protos, only: [:show, :new, :create], module: :protos do
       collection do
         get 'popular'
