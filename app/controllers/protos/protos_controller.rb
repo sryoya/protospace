@@ -17,6 +17,7 @@ class Protos::ProtosController < ApplicationController
   end
 
   def newest
+    @protos = Proto.includes(:user, :tags, :proto_images).order(updated_at: :desc).limit(20)
   end
 
 
