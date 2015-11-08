@@ -1,3 +1,17 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", :alt => "PROTO TYPE - SHARE THE PROTOTYPE", :height => "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li{:role => "presentation"}
+          = link_to 'Popular PROTO', popular_protos_path
+        %li{:role => "presentation"}
+          = link_to 'Newest PROTO', newest_protos_path
+      %button.active{:type => "button", :class => "btn btn-default col-lg-1"}
+        = link_to "View Tags", tags_path
 .container
   .row
     .tags-list
