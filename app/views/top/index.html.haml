@@ -23,7 +23,7 @@
               %h3 #{proto.title}
               .proto-meta
                 .proto-user
-                  %a{:href => "#"} by #{proto.user.name}
+                  = link_to "by#{proto.user.name}", user_path(proto.user.id)
                 .proto-posted
                   = proto.updated_at.strftime('%b %d')
               %ul.proto-tag-list.list-inline

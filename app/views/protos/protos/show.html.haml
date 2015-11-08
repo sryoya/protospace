@@ -9,8 +9,7 @@
           %h4#top-aligned-media.media-heading
             = @proto.title
           .proto-user
-            %a{:href => ""}
-              by #{@proto.user.name}
+            = link_to "by#{proto.user.name}", user_path(proto.user.id)
             %span.degree
               = @proto.user.group
               = @proto.user.works
