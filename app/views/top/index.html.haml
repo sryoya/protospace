@@ -12,41 +12,4 @@
           = link_to 'Newest PROTO', newest_index_path
       %button{:type => "button", :class => "btn btn-default col-lg-1"}
         = link_to "View Tags", tags_path
-.container.proto-list
-  .row
-    - @protos.each do |proto|
-      .col-sm-4.col-md-3.proto-content
-        .thumbnail
-          = link_to proto_path(proto.id) do
-            = image_tag("#{proto.proto_images.main.first.image}")
-            .caption
-              %h3 #{proto.title}
-              .proto-meta
-                .proto-user
-                  = link_to "by#{proto.user.name}", user_path(proto.user.id)
-                .proto-posted
-                  = proto.updated_at.strftime('%b %d')
-              %ul.proto-tag-list.list-inline
-                - proto.tags.each do |tag|
-                  %li
-                    = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default"
-.text-center
-  %ul.pagination
-    %li.disabled
-      %a{"aria-label" => "Previous", :href => "#"}
-        %span{"aria-hidden" => "true"} «
-    %li.active
-      %a{:href => "#"}
-        1
-        %span.sr-only (current)
-    %li
-      %a{:href => "#"} 2
-    %li
-      %a{:href => "#"} 3
-    %li
-      %a{:href => "#"} 4
-    %li
-      %a{:href => "#"} 5
-    %li
-      %a{"aria-label" => "Next", :href => "#"}
-        %span{"aria-hidden" => "true"} »
+= render partial: 'index'
