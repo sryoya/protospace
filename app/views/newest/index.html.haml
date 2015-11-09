@@ -6,10 +6,10 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.active{:role => "presentation"}
-          = link_to 'Popular PROTO', popular_protos_path
         %li{:role => "presentation"}
-          = link_to 'Newest PROTO', newest_protos_path
+          = link_to 'Popular PROTO', protos_path
+        %li.active{:role => "presentation"}
+          = link_to 'Newest PROTO', newest_index_path
       %button{:type => "button", :class => "btn btn-default col-lg-1"}
         = link_to "View Tags", tags_path
 .container.proto-list

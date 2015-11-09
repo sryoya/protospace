@@ -3,11 +3,8 @@ Rails.application.routes.draw do
     root 'top#index'
     resources :users, only: :show
     resources :tags, only: [:index, :show]
-    resources :protos, only: [:show, :new, :create], module: :protos do
-      collection do
-        get 'popular'
-        get 'newest'
-      end
+    resources :newest, only: :index
+    resources :protos, only: [:index, :show, :new, :create], module: :protos do
       resources :comments, only: :create
       resources :likes, only: [:create, :destroy]
     end
