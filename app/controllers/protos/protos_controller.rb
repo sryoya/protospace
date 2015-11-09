@@ -17,8 +17,7 @@ class Protos::ProtosController < ApplicationController
   end
 
   def index
-    likes = Like.group(:proto_id).order('count_proto_id DESC').limit(20).count(:proto_id).keys
-    @protos = likes.map{|like| Proto.includes(:user, :tags, :proto_images).find(like)}
+    @protos = Proto.includes(:user, :tags, :proto_images).order(likes_count: :desc).limit(20)
   end
 
   private
