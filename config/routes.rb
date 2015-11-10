@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     root 'top#index'
     resources :users, only: :show
     resources :tags, only: [:index, :show]
-    resources :newest, only: :index
+    namespace :protos do
+      resources :newest, only: :index
+    end
     resources :protos, only: [:index, :show, :new, :create], module: :protos do
       resources :comments, only: :create
       resources :likes, only: [:create, :destroy]
