@@ -16,6 +16,10 @@ class Protos::ProtosController < ApplicationController
     redirect_to :root and return
   end
 
+  def index
+    @protos = Proto.includes(:user, :tags, :proto_images).order(likes_count: :desc).limit(20)
+  end
+
   private
     def create_params
       params.require(:proto).permit(:title, :catch_copy, :concept, tag_list: [], proto_images_attributes: [:image, :status]).merge(user_id: current_user.id)

@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
     root 'top#index'
     resources :users, only: :show
-    resources :tags, only: :index
-    resources :protos, only: [:show, :new, :create], module: :protos do
-     resources :comments, only: :create
-     resources :likes, only: [:create, :destroy]
+    resources :tags, only: [:index, :show]
+    namespace :protos do
+      resources :newest, only: :index
+    end
+    resources :protos, only: [:index, :show, :new, :create], module: :protos do
+      resources :comments, only: :create
+      resources :likes, only: [:create, :destroy]
     end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

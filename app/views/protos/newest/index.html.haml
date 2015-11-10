@@ -8,15 +8,8 @@
       %ul.nav.nav-pills.col-lg-11
         %li{:role => "presentation"}
           = link_to 'Popular PROTO', protos_path
-        %li{:role => "presentation"}
+        %li.active{:role => "presentation"}
           = link_to 'Newest PROTO', protos_newest_index_path
-      %button.active{:type => "button", :class => "btn btn-default col-lg-1"}
+      %button{:type => "button", :class => "btn btn-default col-lg-1"}
         = link_to "View Tags", tags_path
-.container
-  .row
-    .tags-list
-      %h2 Tags list
-      %div
-        - @tags.each do |tag|
-          .col-md-4
-            = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default col-md-4"
+= render partial: 'top/index'
