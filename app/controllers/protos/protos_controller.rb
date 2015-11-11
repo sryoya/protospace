@@ -26,7 +26,17 @@ class Protos::ProtosController < ApplicationController
 
   def update
     proto = Proto.find(params[:id])
-    proto.update(update_params)
+    if proto.user_id == current_user.id
+      proto.update(update_params)
+    end
+    redirect_to :root and return
+  end
+
+  def destroy
+    proto = Proto.find(params[:id])
+    if proto.user_id == current_user.id
+      proto.destroy
+    end
     redirect_to :root and return
   end
 

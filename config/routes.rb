@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :protos do
       resources :newest, only: :index
     end
-    resources :protos, only: [:index, :show, :new, :create, :edit, :update], module: :protos do
+    resources :protos, module: :protos do
       resources :comments, only: :create
       resources :likes, only: [:create, :destroy]
     end
