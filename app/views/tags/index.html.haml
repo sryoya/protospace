@@ -20,3 +20,5 @@
         - @tags.each do |tag|
           .col-md-4
             = link_to "#{tag.name}", tag_path(tag.name), class: "btn btn-default col-md-4"
+.text-center
+  = paginate(@tags)
