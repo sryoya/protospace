@@ -17,7 +17,7 @@ class Protos::ProtosController < ApplicationController
   end
 
   def index
-    @protos = Proto.includes(:user, :tags, :proto_images).order(likes_count: :desc).limit(20)
+    @protos = Proto.includes(:user, :tags, :proto_images).order(likes_count: :desc).page(params[:page])
   end
 
   private

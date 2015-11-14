@@ -1,4 +1,5 @@
 class Proto < ActiveRecord::Base
+  paginates_per 8
   belongs_to :user
   has_many :proto_images
   has_many :comments
