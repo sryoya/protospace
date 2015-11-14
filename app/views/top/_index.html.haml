@@ -3,6 +3,13 @@
     - @protos.each do |proto|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
+          - if user_signed_in? && current_user.id == proto.user_id
+            .more
+              .more_list
+                .btn.btn-default
+                  = link_to '編集', edit_proto_path(proto.id)
+                .btn.btn-default
+                  = link_to '削除', "/protos/#{proto.id}", method: :delete
           = link_to proto_path(proto.id) do
             = image_tag("#{proto.proto_images.main.first.image}")
             .caption
