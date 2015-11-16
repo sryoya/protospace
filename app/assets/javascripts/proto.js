@@ -3,8 +3,7 @@ $(function(){
 
   for(let i = 0; i < 4; i++){
     $("#proto_proto_images_attributes_" + i + "_image").change(function(){
-      let num = $(this).attr("id").split("_")[4];
-      let uploaded_image = $("#uploaded-image-" + num);
+      let uploaded_image = $("#uploaded-image-" + i);
       let file = $(this).prop('files')[0];
       let fr = new FileReader();
       fr.onload = function(){
