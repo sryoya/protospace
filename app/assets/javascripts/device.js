@@ -1,3 +1,4 @@
+"use strict";
 $(function(){
   $("#user_avatar").change(function(){
     let uploaded_avatar = $("#uploaded_avatar");
