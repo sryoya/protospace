@@ -14,4 +14,9 @@ for(var i = 0; i < 4; i++){
   });
   };
 
+$(".image-upload-plus").click(function(){
+$(this).hide();
+$("#another-form").removeAttr('id');
+});
+
 });

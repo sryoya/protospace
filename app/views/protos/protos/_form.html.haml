@@ -27,6 +27,11 @@
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
+            = f.fields_for :proto_images do |q|
+              .image-upload#another-form
+                = q.file_field :image
+                = image_tag("", id: "uploaded-image-3")
+                = q.hidden_field :status, value: "sub"
     .row.proto-description
       = f.text_field :catch_copy, placeholder: "Catch Copy", class: "col-md-12"
       = f.text_field :concept, cols: "30", rows: "4", placeholder: "Concept", class: "col-md-12"
