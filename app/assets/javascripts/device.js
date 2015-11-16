@@ -4,6 +4,7 @@ $(function(){
         var file = $(this).prop('files')[0];
         var fr = new FileReader();
         fr.onload = function(){
+        uploaded_avatar.removeAttr('src')
         uploaded_avatar.attr('src', fr.result );
         }
       fr.readAsDataURL(file);
