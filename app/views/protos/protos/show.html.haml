@@ -45,8 +45,9 @@
         (#{@comments.length})
     .comments
       = render @comments
-    = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
-      = f.hidden_field :proto_id, value: "#{@proto.id}"
+    = if user_signed_in?
+      = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
+        = f.hidden_field :proto_id, value: "#{@proto.id}"
       .row
         %h4 Write a comment
         .form-group.col-md-10
