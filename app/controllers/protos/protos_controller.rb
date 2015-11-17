@@ -4,7 +4,9 @@ class Protos::ProtosController < ApplicationController
     @comment = Comment.new
     @comments = @proto.comments.includes(:user)
     @likes = @proto.likes
-    @like = Like.where(proto_id: @proto.id, user_id: current_user.id)
+    if user_signed_in?
+      @like = Like.where(proto_id: @proto.id, user_id: current_user.id)
+    end
   end
   def new
     @proto = Proto.new
