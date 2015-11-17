@@ -4,7 +4,7 @@
       .media
         .media-left
           = link_to user_path(@proto.user.id) do
-            %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@proto.user.avatar}", :style => "width: 64px; height: 64px;"}/
+            %img.media-object{alt: "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", src: "#{@proto.user.avatar}", style: "width: 64px; height: 64px;"}/
         .media-body
           %h4#top-aligned-media.media-heading
             = @proto.title
@@ -17,12 +17,12 @@
       = render partial: 'protos/likes/like'
   .row
     .col-md-9
-      = image_tag("#{@proto.proto_images.main.first.image}", :class => 'img-responsive')
+      = image_tag("#{@proto.proto_images.main.first.image}", class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
         -  @proto.proto_images.sub.each do |sub_image|
           %li.list-group-item
-            = image_tag("#{sub_image.image}", :class => 'img-responsive')
+            = image_tag("#{sub_image.image}", class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
