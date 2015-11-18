@@ -1,13 +1,13 @@
 class Protos::ProtosController < ApplicationController
+
   def show
     @proto = Proto.includes(:proto_images, :user, :tags).find(params[:id])
     @comment = Comment.new
     @comments = @proto.comments.includes(:user)
     @likes = @proto.likes
-    if user_signed_in?
-      @like = Like.where(proto_id: @proto.id, user_id: current_user.id)
-    end
+    @like = Like.where(proto_id: @proto.id, user_id: current_user.id) if user_signed_in?
   end
+
   def new
     @proto = Proto.new
     @proto.proto_images.build
@@ -28,17 +28,13 @@ class Protos::ProtosController < ApplicationController
 
   def update
     proto = Proto.find(params[:id])
-    if proto.user_id == current_user.id
-      proto.update(update_params)
-    end
+    proto.update(update_params) if proto.user_id == current_user.id
     redirect_to :root and return
   end
 
   def destroy
     proto = Proto.find(params[:id])
-    if proto.user_id == current_user.id
-      proto.destroy
-    end
+    proto.destroy if proto.user_id == current_user.id
     redirect_to :root and return
   end
 
