@@ -45,13 +45,13 @@
         (#{@comments.length})
     .comments
       = render @comments
-    = if user_signed_in?
+    - if user_signed_in?
       = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
         = f.hidden_field :proto_id, value: "#{@proto.id}"
-      .row
-        %h4 Write a comment
-        .form-group.col-md-10
-          = f.text_area :comment, class: "form-control", id: "comment", placeholder: "Your comments", rows: "3"
-        .form-group.col-md-2
-          = f.button placeholder: "Comment", class: "btn btn-primary"
+        .row
+          %h4 Write a comment
+          .form-group.col-md-10
+            = f.text_area :comment, class: "form-control", id: "comment", placeholder: "Your comments", rows: "3"
+          .form-group.col-md-2
+            = f.button placeholder: "Comment", class: "btn btn-primary"
 
