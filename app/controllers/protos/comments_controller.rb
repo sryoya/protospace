@@ -1,6 +1,6 @@
 class Protos::CommentsController < ApplicationController
   def create
-    Comment.create(create_params)
+    Comment.create(create_params) if user_signed_in?
     proto = Proto.find(params[:comment][:proto_id])
     @comments = proto.comments.eager_load(:user)
   end
