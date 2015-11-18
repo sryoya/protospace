@@ -2,7 +2,7 @@ class Protos::CommentsController < ApplicationController
   def create
     Comment.create(create_params)
     proto = Proto.find(params[:comment][:proto_id])
-    @comments = proto.comments.includes(:user)
+    @comments = proto.comments.eager_load(:user)
   end
 
   private
