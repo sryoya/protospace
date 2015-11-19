@@ -10,6 +10,8 @@ public/uploads
 
 public/uploads
 
+config/initializers/carrierwave.rb
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
