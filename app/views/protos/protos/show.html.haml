@@ -4,7 +4,7 @@
       .media
         .media-left
           = link_to user_path(@proto.user.id) do
-            %img.media-object{:alt => "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", :src => "#{@proto.user.avatar}", :style => "width: 64px; height: 64px;"}/
+            %img.media-object{alt: "64x64", "data-holder-rendered" => "true", "data-src" => "holder.js/64x64", src: "#{@proto.user.avatar}", style: "width: 64px; height: 64px;"}/
         .media-body
           %h4#top-aligned-media.media-heading
             = @proto.title
@@ -17,12 +17,12 @@
       = render partial: 'protos/likes/like'
   .row
     .col-md-9
-      = image_tag("#{@proto.proto_images.main.first.image}", :class => 'img-responsive')
+      = image_tag("#{@proto.proto_images.main.first.image}", class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
         -  @proto.proto_images.sub.each do |sub_image|
           %li.list-group-item
-            = image_tag("#{sub_image.image}", :class => 'img-responsive')
+            = image_tag("#{sub_image.image}", class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
@@ -45,12 +45,13 @@
         (#{@comments.length})
     .comments
       = render @comments
-    = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
-      = f.hidden_field :proto_id, value: "#{@proto.id}"
-      .row
-        %h4 Write a comment
-        .form-group.col-md-10
-          = f.text_area :comment, class: "form-control", id: "comment", placeholder: "Your comments", rows: "3"
-        .form-group.col-md-2
-          = f.button placeholder: "Comment", class: "btn btn-primary"
+    - if user_signed_in?
+      = form_for([@proto, @comment], remote: true, html: {class: "form-inline", role: "form"}) do |f|
+        = f.hidden_field :proto_id, value: "#{@proto.id}"
+        .row
+          %h4 Write a comment
+          .form-group.col-md-10
+            = f.text_area :comment, class: "form-control", id: "comment", placeholder: "Your comments", rows: "3"
+          .form-group.col-md-2
+            = f.button placeholder: "Comment", class: "btn btn-primary"
 
