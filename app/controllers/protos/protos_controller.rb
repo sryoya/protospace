@@ -1,7 +1,7 @@
 class Protos::ProtosController < ApplicationController
 
   def show
-    @proto = Proto.eager_load(:proto_images, :user, :tags).find(params[:id])
+    @proto = Proto.includes(:proto_images, :user, :tags).find(params[:id])
     @comment = Comment.new
     @comments = @proto.comments.eager_load(:user)
     @likes = @proto.likes
@@ -19,11 +19,11 @@ class Protos::ProtosController < ApplicationController
   end
 
   def index
-    @protos = Proto.eager_load(:user, :tags, :proto_images).order(likes_count: :desc).page(params[:page])
+    @protos = Proto.includes(:user, :tags, :proto_images).order(likes_count: :desc).page(params[:page])
   end
 
   def edit
-    @proto = Proto.eager_load(:proto_images, :user, :tags).find(params[:id])
+    @proto = Proto.includes(:proto_images, :user, :tags).find(params[:id])
   end
 
   def update
