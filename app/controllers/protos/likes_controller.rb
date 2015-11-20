@@ -1,6 +1,6 @@
 class Protos::LikesController < ApplicationController
   def create
-    Like.where(user_id: current_user.id, proto_id: params[:proto_id]).first_or_create if user_signed_in?
+    Like.where(user_id: current_user.id, proto_id: params[:proto_id]).first_or_create
     get_proto_and_likes
   end
 
